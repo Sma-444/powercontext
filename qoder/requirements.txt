@@ -1,0 +1,8 @@
+# 直接依赖。
+# PowerContext 通过 `seekdb` extra 带上嵌入式 seekdb（按 SQLite 之外的真实数据库运行），
+# 因此不需要另外部署 OceanBase / seekdb 服务。
+powercontext[seekdb]==1.5.0
+pypdf==7.0.0
+PyYAML==6.0.2
+jieba==0.42.1
+pytest==8.4.2

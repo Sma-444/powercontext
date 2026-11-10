@@ -1,0 +1,9 @@
+# 资料清单：给文件起一个干净的显示名，避免 PDF 元数据里的「Microsoft Word - xxx.doc」漏到界面上。
+titles:
+  papers/raft: "Raft: In Search of an Understandable Consensus Algorithm"
+  papers/dynamo: "Dynamo: Amazon's Highly Available Key-value Store"
+  notes/cap-basic: "CAP 定理：到底在限制什么"
+  notes/consistency-models: "一致性模型速查"
+  notes/raft-notes: "Raft 精读笔记"
+  notes/dynamo-notes: "Dynamo 精读笔记"
+  notes/papers-index: "论文清单与阅读顺序"

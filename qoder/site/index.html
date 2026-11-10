@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>读伴 DuBan — 会记住你的资料阅读助手</title>
+<meta name="description" content="用 seekdb 做检索、PowerContext 做记忆的本地资料阅读助手：中文提问命中英文论文，每条结论都能点回原文那一页。" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="logo">读</span>
+      <span>读伴 <em>DuBan</em></span>
+    </a>
+    <nav>
+      <a href="#pain">痛点</a>
+      <a href="#features">功能</a>
+      <a href="#arch">架构</a>
+      <a href="#metrics">指标</a>
+      <a href="#run">复现</a>
+      <a class="ghost" href="https://github.com/Sma-444/duban" target="_blank" rel="noopener">代码仓库</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">OceanBase 2026 · Qoder 赛题</p>
+      <h1>读论文，<br />不用再从第一页翻起。</h1>
+      <p class="lede">
+        读伴把「论文、笔记、交接文档」放进同一个索引里：用中文提问也能命中英文论文，
+        每条结论都挂着一个能点开的页码；你没看懂的概念、读到第几页，它都记得。
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#run">三分钟跑起来</a>
+        <a class="btn" href="#features">看看它怎么做</a>
+      </div>
+      <ul class="facts">
+        <li><b>0.90</b><span>Hit@3（21 道标注题）</span></li>
+        <li><b>100%</b><span>引用可回查</span></li>
+        <li><b>9</b><span>测试通过</span></li>
+      </ul>
+    </div>
+    <figure class="shot">
+      <img src="assets/ui-ask.png" alt="读伴界面：提问后给出带页码引用的回答" />
+      <figcaption>提问一次，回答里的每条要点都指向原文的具体页</figcaption>
+    </figure>
+  </section>
+
+  <section id="pain" class="section wrap">
+    <h2 class="section-title">三个反复出现的小麻烦</h2>
+    <p class="section-sub">它们不值得单独写脚本，但每次都要花掉十几分钟。</p>
+    <div class="grid three">
+      <article class="card">
+        <div class="icon">⌕</div>
+        <h3>找一句话，翻十分钟</h3>
+        <p>「这个结论在哪篇论文第几页？」PDF 里 Ctrl+F 猜关键词，中文问题还搜不到英文原文。</p>
+      </article>
+      <article class="card">
+        <div class="icon">◔</div>
+        <h3>没懂的地方，下次还是没懂</h3>
+        <p>上周卡住的概念，这周重新读一遍——因为没有工具记得你卡在哪。</p>
+      </article>
+      <article class="card">
+        <div class="icon">↺</div>
+        <h3>读到一半，接不上</h3>
+        <p>隔几天再打开，忘了读到第几页、为什么停下，只好从头扫一遍。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="features" class="section wrap">
+    <h2 class="section-title">它做的三件事</h2>
+
+    <div class="feature">
+      <div class="feature-copy">
+        <span class="tag">检索</span>
+        <h3>中文提问，命中英文论文的那一页</h3>
+        <p>
+          seekdb 里的 <code>NGRAM</code> 全文索引同时收中文笔记和英文论文；
+          内置一张人工术语表做跨语言查询扩展，把「选举限制」扩成
+          <code>election restriction</code> 再去取候选。
+        </p>
+        <p class="mini">重排用了 IDF 覆盖度、标题命中、邻近度，并对目录页与自测问句降权。</p>
+      </div>
+      <figure class="shot small">
+        <img src="assets/ui-answer.png" alt="带页码引用的回答与引用清单" />
+      </figure>
+    </div>
+
+    <div class="feature reverse">
+      <div class="feature-copy">
+        <span class="tag">记忆</span>
+        <h3>你说没看懂，它下一次会先补一句</h3>
+        <p>
+          薄弱点写进 PowerContext 的 <code>atomic-memory</code>。下次问到相关内容，
+          它会先取一条更基础的片段，并在回答上方说明「你之前标记过这个」。
+        </p>
+        <p class="mini">画像是「解释深度」，进度是「读到第几页」，都是只追加、可重启。</p>
+      </div>
+      <figure class="shot small">
+        <img src="assets/ui-memory.png" alt="右侧记忆面板：薄弱点、上次提问、写入记录" />
+      </figure>
+    </div>
+
+    <div class="feature">
+      <div class="feature-copy">
+        <span class="tag">复习</span>
+        <h3>复习清单不是待办，是「你欠自己的三件事」</h3>
+        <p>
+          没弄懂的概念、没读完的资料、还没开始的那几篇，按剩余比例排好，
+          每条都能一键「去问」或「接着读」。
+        </p>
+        <p class="mini">数据全部来自记忆与索引，不额外维护一份清单。</p>
+      </div>
+      <figure class="shot small">
+        <img src="assets/ui-review.png" alt="复习清单：薄弱点与未读完资料" />
+      </figure>
+    </div>
+  </section>
+
+  <section id="arch" class="section wrap">
+    <h2 class="section-title">一次提问，经过什么</h2>
+    <p class="section-sub">两套技术分工明确：seekdb 管「资料里说过什么」，PowerContext 管「你到哪儿了」。</p>
+    <div class="diagram">
+      <svg viewBox="0 0 900 380" role="img" aria-label="读伴数据流：提问 → 查询改写 → seekdb 检索 → 重排 → 抽取式作答 → 回答，PowerContext 提供画像与记忆">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"></path>
+          </marker>
+        </defs>
+
+        <rect x="20" y="150" width="110" height="60" rx="10" class="box-dark"></rect>
+        <text x="75" y="176" class="label-light">提问</text>
+        <text x="75" y="194" class="label-light small">中文 / 英文</text>
+
+        <rect x="160" y="140" width="140" height="80" rx="10" class="box"></rect>
+        <text x="230" y="168" class="label">查询改写</text>
+        <text x="230" y="188" class="label small">分词 · 术语表</text>
+        <text x="230" y="204" class="label small">多路召回</text>
+
+        <rect x="340" y="120" width="180" height="120" rx="10" class="box-accent"></rect>
+        <text x="430" y="146" class="label">seekdb（嵌入式）</text>
+        <text x="430" y="166" class="label small">NGRAM 全文索引</text>
+        <text x="430" y="182" class="label small">MATCH … AGAINST</text>
+        <text x="430" y="198" class="label small">duban_chunks</text>
+        <text x="430" y="216" class="label small">SQL 日志可核对</text>
+
+        <rect x="560" y="140" width="150" height="80" rx="10" class="box"></rect>
+        <text x="635" y="166" class="label">重排</text>
+        <text x="635" y="184" class="label small">IDF 覆盖 · 标题</text>
+        <text x="635" y="200" class="label small">邻近 · 降权</text>
+
+        <rect x="745" y="120" width="135" height="120" rx="10" class="box"></rect>
+        <text x="812" y="146" class="label">抽取式作答</text>
+        <text x="812" y="164" class="label small">句子级引用</text>
+        <text x="812" y="180" class="label small">path # page</text>
+        <text x="812" y="202" class="label small">不调用模型</text>
+
+        <rect x="240" y="20" width="330" height="70" rx="10" class="box-mem"></rect>
+        <text x="405" y="46" class="label">PowerContext（atomic-memory）</text>
+        <text x="405" y="64" class="label small">画像 · 薄弱点 · 进度 · 上次提问</text>
+        <text x="405" y="80" class="label small">只追加，重启后仍在</text>
+
+        <path d="M130 180 L160 180" class="line" marker-end="url(#arrow)"></path>
+        <path d="M300 180 L340 180" class="line" marker-end="url(#arrow)"></path>
+        <path d="M520 180 L560 180" class="line" marker-end="url(#arrow)"></path>
+        <path d="M710 180 L745 180" class="line" marker-end="url(#arrow)"></path>
+        <path d="M405 90 L405 120" class="line dashed" marker-end="url(#arrow)"></path>
+        <path d="M405 120 L300 140" class="line dashed"></path>
+        <path d="M812 240 L812 300 L75 300 L75 210" class="line dashed" marker-end="url(#arrow)"></path>
+        <text x="500" y="324" class="label small muted">回答：要点 + 出处 + 记忆提示</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="metrics" class="section wrap">
+    <h2 class="section-title">可复现的数字</h2>
+    <p class="section-sub">
+      21 道人工标注题，每题写清「正确答案在哪一篇的哪一页 / 哪一节」。
+      指标由 <code>python -m duban eval</code> 生成，改动标注不会被代码反向影响。
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>指标</th><th>值</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td>Hit@3</td><td class="num">0.9048</td><td>19/21 题的正确证据落在前三条引用</td></tr>
+          <tr><td>MRR</td><td class="num">0.7540</td><td>首条正确结果的平均倒数排名</td></tr>
+          <tr><td>must_include</td><td class="num">0.8571</td><td>回答覆盖人工标注关键词的比例</td></tr>
+          <tr><td>citation_valid</td><td class="num">1.0000</td><td>返回的引用 100% 能回查到原文</td></tr>
+          <tr><td>语料</td><td class="num">7 篇 / 275 片段</td><td>2 篇英文论文 + 5 篇中文笔记</td></tr>
+          <tr><td>测试</td><td class="num">9 passed</td><td>切块、引用回查、记忆重启、增量导入</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">运行环境：Linux x86_64 · Python 3.12.16 · seekdb-v1.4.0.0（嵌入式）。</p>
+  </section>
+
+  <section id="run" class="section wrap">
+    <h2 class="section-title">三分钟跑起来</h2>
+    <p class="section-sub">不需要 OceanBase 实例，不需要模型 Key，不需要联网（除了装依赖）。</p>
+    <pre class="code"><code><span class="c"># Python 3.12+</span>
+python -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -r requirements.txt
+
+python -m duban init                                   <span class="c"># 7 篇 / 275 片段入库</span>
+python -m duban ask "Raft 的 Figure 8 说明了什么问题？"
+python -m duban serve                                  <span class="c"># http://127.0.0.1:8765</span></code></pre>
+    <p class="note">
+      完整步骤见仓库 <code>docs/运行说明.md</code>，三组可执行样例见 <code>docs/验证样例.md</code>。
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <h2 class="section-title">技术分工</h2>
+    <div class="grid two">
+      <article class="card tech">
+        <h3>seekdb</h3>
+        <ul>
+          <li>文档与片段存储，<code>WITH PARSER NGRAM</code> 全文索引</li>
+          <li>候选由 <code>MATCH … AGAINST</code> 打分，支持按文档过滤</li>
+          <li>每条 SQL、参数、行数、耗时写进 <code>records/db/queries.jsonl</code></li>
+        </ul>
+      </article>
+      <article class="card tech">
+        <h3>PowerContext</h3>
+        <ul>
+          <li>四类 <code>atomic-memory</code>：画像、薄弱点、进度、问答摘要</li>
+          <li>只追加，取最大 <code>seq</code>；重启后仍可读</li>
+          <li>薄弱点改变召回与措辞，进度改变复习清单</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <strong>读伴 DuBan</strong>
+      <p>OceanBase 2026 比赛 · Qoder 赛题作品</p>
+    </div>
+    <div class="links">
+      <a href="https://github.com/Sma-444/duban" target="_blank" rel="noopener">代码仓库</a>
+      <a href="https://github.com/Sma-444/duban/blob/main/docs/%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E.md" target="_blank" rel="noopener">运行说明</a>
+      <a href="https://docs.qoder.com/qoder/sites" target="_blank" rel="noopener">Qoder Sites</a>
+      <a href="#top">回到顶部</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

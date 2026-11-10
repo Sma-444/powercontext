@@ -1,0 +1,121 @@
+# 标注集：每题的「正确证据」写成人能核对的位置。
+#
+# doc + pages      适用于 PDF（页码从 1 开始，可以在 PDF 阅读器里直接翻到）
+# doc + section    适用于 Markdown 笔记（小节标题包含即可）
+# must_include     可选：抽取式回答里应当出现的字符串（用于衡量回答覆盖）
+#
+# 这些标注是人工写的，跑分脚本只读它，不会改它。
+questions:
+  - id: r01
+    question: Raft 的 Figure 8 说明了什么问题？
+    doc: papers/raft
+    pages: [8, 9]
+    must_include: ["Figure 8"]
+    tag: raft
+  - id: r02
+    question: Raft 里的 InstallSnapshot RPC 是用来做什么的？
+    doc: papers/raft
+    pages: [12]
+    tag: raft
+  - id: r03
+    question: Raft 的 AppendEntries 里 prevLogIndex 和 prevLogTerm 有什么用？
+    doc: papers/raft
+    pages: [4]
+    tag: raft
+  - id: r04
+    question: Raft 为什么需要 joint consensus 才能做成员变更？
+    doc: papers/raft
+    pages: [10, 11]
+    must_include: ["joint"]
+    tag: raft
+  - id: r05
+    question: Raft 的 Leader Completeness 性质保证了什么？
+    doc: papers/raft
+    pages: [5, 8, 9]
+    tag: raft
+  - id: r06
+    question: Raft 的 Log Matching Property 是什么？
+    doc: papers/raft
+    pages: [5, 7]
+    tag: raft
+  - id: r07
+    question: Raft 的选举限制 election restriction 为什么必要？
+    doc: papers/raft
+    pages: [8]
+    tag: raft
+  - id: r08
+    question: Raft 用快照做日志压缩之后，落后太多的 follower 怎么追上？
+    doc: papers/raft
+    pages: [11, 12, 13]
+    tag: raft
+  - id: d01
+    question: Dynamo 用哪种数据结构做反熵 anti-entropy？
+    doc: papers/dynamo
+    pages: [8, 12]
+    must_include: ["Merkle"]
+    tag: dynamo
+  - id: d02
+    question: Dynamo 的向量时钟怎么判断两个版本是并发写？
+    doc: papers/dynamo
+    pages: [5, 6, 7]
+    tag: dynamo
+  - id: d03
+    question: Dynamo 的 sloppy quorum 和 hinted handoff 是什么？
+    doc: papers/dynamo
+    pages: [5, 8]
+    tag: dynamo
+  - id: d04
+    question: Dynamo 的虚拟节点 virtual node 解决了什么问题？
+    doc: papers/dynamo
+    pages: [6]
+    tag: dynamo
+  - id: d05
+    question: Dynamo 里 (N, R, W) 这三个参数分别代表什么？
+    doc: papers/dynamo
+    pages: [5, 7, 11, 14]
+    tag: dynamo
+  - id: d06
+    question: Dynamo 的一致性哈希怎么把 key 分配到节点上？
+    doc: papers/dynamo
+    pages: [1, 5, 6]
+    tag: dynamo
+  - id: n01
+    question: CAP 里的 C、A、P 三个字母的准确定义是什么？
+    doc: notes/cap-basic
+    section: 三个字母的准确定义
+    must_include: ["线性一致", "有限时间"]
+    tag: notes
+  - id: n02
+    question: 线性一致和顺序一致的区别是什么？
+    doc: notes/consistency-models
+    sections: [线性一致性, 顺序一致性]
+    must_include: ["真实时间"]
+    tag: notes
+  - id: n03
+    question: Raft 的安全性有哪两条不能省的规则？
+    doc: notes/raft-notes
+    section: 安全性
+    must_include: ["选举限制", "提交规则"]
+    tag: notes
+  - id: n04
+    question: Dynamo 的读写票数 R + W > N 为什么能保证读到最新写？
+    doc: notes/dynamo-notes
+    section: 读写票数
+    must_include: ["相交"]
+    tag: notes
+  - id: n05
+    question: 为什么 CAP 里的 CA 在分布式系统里不成立？
+    doc: notes/cap-basic
+    section: 为什么 CA
+    tag: notes
+  - id: n06
+    question: BASE 理论和 CAP 是什么关系？
+    doc: notes/cap-basic
+    section: BASE
+    must_include: ["最终一致"]
+    tag: notes
+  - id: x01
+    question: 同样面对分区，Raft 和 Dynamo 分别牺牲了什么？
+    doc: notes/dynamo-notes
+    section: 和 Raft
+    tag: cross

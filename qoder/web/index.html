@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>读伴 DuBan — 会记住你的资料阅读助手</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">读</div>
+      <div>
+        <h1>读伴</h1>
+        <p>会记住你的资料阅读助手</p>
+      </div>
+    </div>
+
+    <div class="stat-row" id="stats">
+      <div class="stat"><b>—</b><span>资料</span></div>
+      <div class="stat"><b>—</b><span>片段</span></div>
+      <div class="stat"><b>—</b><span>薄弱点</span></div>
+    </div>
+
+    <section class="panel">
+      <header>
+        <h2>资料库</h2>
+        <span class="hint" id="corpus-hint">seekdb 索引</span>
+      </header>
+      <ul class="doc-list" id="doc-list"></ul>
+    </section>
+
+    <section class="panel">
+      <header><h2>复习清单</h2><span class="hint">记忆驱动</span></header>
+      <ul class="review-list" id="review-list"></ul>
+    </section>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h2>问点什么</h2>
+        <p class="sub">答案来自你自己的资料，每条结论都能点回原文那一页。</p>
+      </div>
+      <div class="scope" id="scope">—</div>
+    </header>
+
+    <div class="thread" id="thread">
+      <div class="empty" id="empty">
+        <div class="empty-art">◍</div>
+        <h3>先问一句试试</h3>
+        <p>例如：Raft 的 Figure 8 说明了什么问题？</p>
+        <div class="chips" id="seed-chips"></div>
+      </div>
+    </div>
+
+    <form class="composer" id="composer">
+      <input id="question" autocomplete="off" placeholder="输入问题，例如：Dynamo 为什么不用时间戳判断数据新旧？" />
+      <button type="submit" id="send">提问</button>
+    </form>
+    <p class="fineprint">离线抽取式作答：不调用任何外部模型；seekdb 检索 + PowerContext 记忆。</p>
+  </main>
+
+  <aside class="memory">
+    <section class="panel">
+      <header><h2>记忆</h2><span class="hint">PowerContext</span></header>
+      <div class="profile">
+        <label>解释深度</label>
+        <div class="segmented" id="depth">
+          <button data-depth="brief">简明</button>
+          <button data-depth="standard" class="on">标准</button>
+          <button data-depth="deep">详细</button>
+        </div>
+      </div>
+      <div class="memory-block">
+        <h3>薄弱点</h3>
+        <ul class="weak-list" id="weak-list"><li class="muted">还没有标记</li></ul>
+      </div>
+      <div class="memory-block">
+        <h3>上次提问</h3>
+        <p class="last-turn" id="last-turn">—</p>
+      </div>
+      <div class="memory-block">
+        <h3>写入记录</h3>
+        <p class="artifacts" id="artifacts">—</p>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-card">
+    <header>
+      <div>
+        <h3 id="modal-title">原文</h3>
+        <p id="modal-sub" class="sub"></p>
+      </div>
+      <button class="icon" id="modal-close">×</button>
+    </header>
+    <pre id="modal-body"></pre>
+    <footer>
+      <button class="ghost" id="mark-weak">标记这段没看懂</button>
+      <button class="ghost" id="mark-read">标记已读到这里</button>
+    </footer>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

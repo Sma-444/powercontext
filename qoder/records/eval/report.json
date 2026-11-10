@@ -1,0 +1,934 @@
+{
+  "questions": 21,
+  "hit_at_1": 0.619,
+  "hit_at_3": 0.9048,
+  "hit_at_5": 0.9048,
+  "mrr": 0.754,
+  "must_include": 0.8571,
+  "citation_valid": 1.0,
+  "top_k": 5,
+  "candidates": 40,
+  "per_question": [
+    {
+      "id": "r01",
+      "question": "Raft 的 Figure 8 说明了什么问题？",
+      "tag": "raft",
+      "expect": "papers/raft#p8",
+      "rank": 2,
+      "hits": [
+        "papers/raft#p3-5",
+        "papers/raft#p9",
+        "notes/papers-index#L21-26",
+        "papers/raft#p14",
+        "papers/raft#p10-5"
+      ],
+      "must_include": [
+        "Figure 8"
+      ],
+      "covered": false,
+      "bullets": [
+        {
+          "text": "We used randomization to simplify the Raft leader election algorithm. 5 The Raft consensus algorithm Raft is an algorithm for managing a replicated log of the form described in Section 2. Figure 2 summarizes the…",
+          "chunk_id": "papers/raft#p003-5",
+          "citation": "papers/raft.pdf#p3-5",
+          "location": "papers/raft.pdf 第 3 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.64
+        },
+        {
+          "text": "the elements of these ﬁgures are discussed piecewise over the rest of this sec- tion. Raft implements consensus by ﬁrst electing a distin- guished leader, then giving the leader complete responsi- bility for managing…",
+          "chunk_id": "papers/raft#p003-5",
+          "citation": "papers/raft.pdf#p3-5",
+          "location": "papers/raft.pdf 第 3 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.4552
+        },
+        {
+          "text": "Figure 9: If S1 (leader for term T) commits a new log entry from its term, and S5 is elected leader for a later term U, then there must be at least one server (S3) that accepted the log entry and also voted for S5. ure…",
+          "chunk_id": "papers/raft#p009",
+          "citation": "papers/raft.pdf#p9",
+          "location": "papers/raft.pdf 第 9 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.76
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r02",
+      "question": "Raft 里的 InstallSnapshot RPC 是用来做什么的？",
+      "tag": "raft",
+      "expect": "papers/raft#p12",
+      "rank": 1,
+      "hits": [
+        "papers/raft#p12-3",
+        "papers/raft#p12-4",
+        "papers/raft#p5-5",
+        "papers/raft#p10",
+        "papers/raft#p12-1"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "lastIncludedIndex thesnapshotreplacesallentriesupthrough andincludingthisindex lastIncludedTerm termoflastIncludedIndex offset byteoffsetwherechunkispositionedinthe snapshotfile data[]…",
+          "chunk_id": "papers/raft#p012-3",
+          "citation": "papers/raft.pdf#p12-3",
+          "location": "papers/raft.pdf 第 12 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.6
+        },
+        {
+          "text": "this gives the fol- lower a sign of life with each chunk, so it can reset its election timer. leader would already have this entry. However, an excep- tionally slow follower or a new server joining the cluster (Section…",
+          "chunk_id": "papers/raft#p012-4",
+          "citation": "papers/raft.pdf#p12-4",
+          "location": "papers/raft.pdf 第 12 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.5352
+        },
+        {
+          "text": "see Figure 13. When a follower receives a snapshot with this RPC, it must decide what to do with its existing log en- tries. Usually the snapshot will contain new information not already in the recipient’s log. In this…",
+          "chunk_id": "papers/raft#p012-4",
+          "citation": "papers/raft.pdf#p12-4",
+          "location": "papers/raft.pdf 第 12 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.3971
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r03",
+      "question": "Raft 的 AppendEntries 里 prevLogIndex 和 prevLogTerm 有什么用？",
+      "tag": "raft",
+      "expect": "papers/raft#p4",
+      "rank": 1,
+      "hits": [
+        "papers/raft#p4",
+        "notes/raft-notes#L28-36",
+        "papers/raft#p4-1",
+        "papers/raft#p7-4",
+        "papers/raft#p7"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "alsousedas heartbeat(§5.2). Arguments: term leader’sterm leaderId sofollowercanredirectclients prevLogIndex indexoflogentryimmediatelypreceding newones prevLogTerm termofprevLogIndexentry entries[]…",
+          "chunk_id": "papers/raft#p004",
+          "citation": "papers/raft.pdf#p4",
+          "location": "papers/raft.pdf 第 4 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.5352
+        },
+        {
+          "text": "Invokedbycandidatestogathervotes(§5.2). Arguments: term candidate’sterm candidateId candidaterequestingvote lastLogIndex indexofcandidate’slastlogentry(§5.4) lastLogTerm termofcandidate’slastlogentry(§5.4) Results: term…",
+          "chunk_id": "papers/raft#p004",
+          "citation": "papers/raft.pdf#p4",
+          "location": "papers/raft.pdf 第 4 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.4
+        },
+        {
+          "text": "一致性检查：AppendEntries 带 prevLogIndex 与 prevLogTerm，follower 对不上就拒绝， Leader 回退 nextIndex 重试。",
+          "chunk_id": "notes/raft-notes#0003",
+          "citation": "notes/raft-notes.md#L28-36",
+          "location": "notes/raft-notes.md 第 28-36 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.5011
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r04",
+      "question": "Raft 为什么需要 joint consensus 才能做成员变更？",
+      "tag": "raft",
+      "expect": "papers/raft#p10",
+      "rank": 3,
+      "hits": [
+        "papers/raft#p16-3",
+        "papers/raft#p1-4",
+        "papers/raft#p10-5",
+        "notes/raft-notes#L45-52",
+        "papers/raft#p11"
+      ],
+      "must_include": [
+        "joint"
+      ],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "any server may commit commands, EPaxos balances load well between servers and is able to achieve lower latency than Raft in W AN settings. However, it adds signiﬁcant complexity to Paxos. Several different approaches…",
+          "chunk_id": "papers/raft#p016-3",
+          "citation": "papers/raft.pdf#p16-3",
+          "location": "papers/raft.pdf 第 16 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.64
+        },
+        {
+          "text": "in con- trast, VR stops all normal processing during conﬁgura-",
+          "chunk_id": "papers/raft#p016-3",
+          "citation": "papers/raft.pdf#p16-3",
+          "location": "papers/raft.pdf 第 16 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.2369
+        },
+        {
+          "text": "consensus algorithm, while resolving conﬂicts sim- ply and rapidly. • Membership changes: Raft’s mechanism for changing the set of servers in the cluster uses a new joint consensus approach where the majorities of two…",
+          "chunk_id": "papers/raft#p001-4",
+          "citation": "papers/raft.pdf#p1-4",
+          "location": "papers/raft.pdf 第 1 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.64
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r05",
+      "question": "Raft 的 Leader Completeness 性质保证了什么？",
+      "tag": "raft",
+      "expect": "papers/raft#p5",
+      "rank": 1,
+      "hits": [
+        "papers/raft#p9-1",
+        "notes/raft-notes#L28-36",
+        "papers/raft#p5",
+        "papers/raft#p13-4",
+        "papers/raft#p9-4"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "ery server), but Raft takes a more conservative approach for simplicity. Raft incurs this extra complexity in the commitment rules because log entries retain their original term num- bers when a leader replicates…",
+          "chunk_id": "papers/raft#p009-1",
+          "citation": "papers/raft.pdf#p9-1",
+          "location": "papers/raft.pdf 第 9 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.76
+        },
+        {
+          "text": "客户端请求 → Leader 追加到本地日志 → 并发发 AppendEntries 给所有 follower；",
+          "chunk_id": "notes/raft-notes#0003",
+          "citation": "notes/raft-notes.md#L28-36",
+          "location": "notes/raft-notes.md 第 28-36 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.4183
+        },
+        {
+          "text": "这条机制保证日志匹配性质：如果两个日志在某个索引处的 term 相同，那么它们该索引之前的日志完全相同。",
+          "chunk_id": "notes/raft-notes#0003",
+          "citation": "notes/raft-notes.md#L28-36",
+          "location": "notes/raft-notes.md 第 28-36 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.3908
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r06",
+      "question": "Raft 的 Log Matching Property 是什么？",
+      "tag": "raft",
+      "expect": "papers/raft#p5",
+      "rank": 1,
+      "hits": [
+        "papers/raft#p7-1",
+        "papers/raft#p9-4",
+        "papers/raft#p7-2",
+        "papers/raft#p9",
+        "papers/raft#p5"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "that a log entry is committed, it applies the entry to its local state machine (in log order). We designed the Raft log mechanism to maintain a high level of coherency between the logs on different servers. Not only…",
+          "chunk_id": "papers/raft#p007-1",
+          "citation": "papers/raft.pdf#p7-1",
+          "location": "papers/raft.pdf 第 7 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 1.0
+        },
+        {
+          "text": "T, since the voter’s last log term was at least T (it con- tains the committed entry from term T). The earlier leader that created leader U’s last log entry must have contained the committed entry in its log (by assump…",
+          "chunk_id": "papers/raft#p009-4",
+          "citation": "papers/raft.pdf#p9-4",
+          "location": "papers/raft.pdf 第 9 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.85
+        },
+        {
+          "text": "sistency check performed by AppendEntries. When send- ing an AppendEntries RPC, the leader includes the index and term of the entry in its log that immediately precedes the new entries. If the follower does not ﬁnd an…",
+          "chunk_id": "papers/raft#p007-2",
+          "citation": "papers/raft.pdf#p7-2",
+          "location": "papers/raft.pdf 第 7 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.85
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r07",
+      "question": "Raft 的选举限制 election restriction 为什么必要？",
+      "tag": "raft",
+      "expect": "papers/raft#p8",
+      "rank": null,
+      "hits": [
+        "papers/raft#p5-1",
+        "notes/raft-notes#L38-43",
+        "papers/raft#p1-3",
+        "papers/raft#p5-2",
+        "papers/raft#p3-5"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "the solution involves an additional restriction on the election mechanism de- scribed in Section 5.2. After presenting the consensus algorithm, this section dis- cusses the issue of availability and the role of timing…",
+          "chunk_id": "papers/raft#p005-1",
+          "citation": "papers/raft.pdf#p5-1",
+          "location": "papers/raft.pdf 第 5 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.5923
+        },
+        {
+          "text": "forcing the other logs to agree with its own (Sec- tion 5.3). • Safety: the key safety property for Raft is the State Machine Safety Property in Figure 3: if any server has applied a particular log entry to its state…",
+          "chunk_id": "papers/raft#p005-1",
+          "citation": "papers/raft.pdf#p5-1",
+          "location": "papers/raft.pdf 第 5 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.4857
+        },
+        {
+          "text": "1. 选举限制（Election Restriction）：候选者的日志必须至少和多数派中任何节点一样新， 否则拿不到票。",
+          "chunk_id": "notes/raft-notes#0004",
+          "citation": "notes/raft-notes.md#L38-43",
+          "location": "notes/raft-notes.md 第 38-43 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.647
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "r08",
+      "question": "Raft 用快照做日志压缩之后，落后太多的 follower 怎么追上？",
+      "tag": "raft",
+      "expect": "papers/raft#p11",
+      "rank": 1,
+      "hits": [
+        "papers/raft#p12-5",
+        "papers/raft#p13",
+        "notes/raft-notes#L54-58",
+        "papers/raft#p12-4",
+        "papers/raft#p11-6"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "If instead the follower receives a snap- shot that describes a preﬁx of its log (due to retransmis- sion or by mistake), then log entries covered by the snap- shot are deleted but entries following the snapshot are…",
+          "chunk_id": "papers/raft#p012-5",
+          "citation": "papers/raft.pdf#p12-5",
+          "location": "papers/raft.pdf 第 12 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.56
+        },
+        {
+          "text": "lowers, just followers can now reorganize their data. We considered an alternative leader-based approach in which only the leader would create a snapshot, then it would send this snapshot to each of its followers. How…",
+          "chunk_id": "papers/raft#p013",
+          "citation": "papers/raft.pdf#p13",
+          "location": "papers/raft.pdf 第 13 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.52
+        },
+        {
+          "text": "落后太多的 follower 收不到被压缩的日志，Leader 改用 InstallSnapshot 直接传快照。",
+          "chunk_id": "notes/raft-notes#0006",
+          "citation": "notes/raft-notes.md#L54-58",
+          "location": "notes/raft-notes.md 第 54-58 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.4379
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "d01",
+      "question": "Dynamo 用哪种数据结构做反熵 anti-entropy？",
+      "tag": "dynamo",
+      "expect": "papers/dynamo#p8",
+      "rank": 1,
+      "hits": [
+        "papers/dynamo#p8-5",
+        "papers/dynamo#p8-4",
+        "papers/dynamo#p5-6",
+        "papers/dynamo#p10",
+        "notes/dynamo-notes#L72-76"
+      ],
+      "must_include": [
+        "Merkle"
+      ],
+      "covered": false,
+      "bullets": [
+        {
+          "text": "For instance, if the hash values of the root of two trees are equal, then the values of the leaf nodes in the tree are equal and the nodes require no synchronization. If not, it implies that the values of some replicas…",
+          "chunk_id": "papers/dynamo#p008-5",
+          "citation": "papers/dynamo.pdf#p8-5",
+          "location": "papers/dynamo.pdf 第 8 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.6182
+        },
+        {
+          "text": "hinted replicas become unavailable before they can be returned to the original replica node. To handle this and other threats to durability, Dynamo implements an anti-entropy (replica synchronization) protocol to keep…",
+          "chunk_id": "papers/dynamo#p008-4",
+          "citation": "papers/dynamo.pdf#p8-4",
+          "location": "papers/dynamo.pdf 第 8 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.6182
+        },
+        {
+          "text": "Figure 2: Partitioning and replication of keys in Dynamo ring. Table 1: Summary of techniques used in Dynamo and their advantages. Problem Technique Advantage Partitioning Consistent Hashing Incremental Scalability High…",
+          "chunk_id": "papers/dynamo#p005-6",
+          "citation": "papers/dynamo.pdf#p5-6",
+          "location": "papers/dynamo.pdf 第 5 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.6182
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "d02",
+      "question": "Dynamo 的向量时钟怎么判断两个版本是并发写？",
+      "tag": "dynamo",
+      "expect": "papers/dynamo#p5",
+      "rank": 2,
+      "hits": [
+        "notes/dynamo-notes#L20-28",
+        "papers/dynamo#p7",
+        "papers/dynamo#p8",
+        "papers/dynamo#p13-4",
+        "papers/dynamo#p7-2"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "Dynamo 用向量时钟记录「谁在哪个版本上做过写」： - 如果一个版本的所有计数器都 ≥ 另一个，则前者更新；",
+          "chunk_id": "notes/dynamo-notes#0003",
+          "citation": "notes/dynamo-notes.md#L20-28",
+          "location": "notes/dynamo-notes.md 第 20-28 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.4495
+        },
+        {
+          "text": "不用时间戳判断新旧，因为时钟不可靠。",
+          "chunk_id": "notes/dynamo-notes#0003",
+          "citation": "notes/dynamo-notes.md#L20-28",
+          "location": "notes/dynamo-notes.md 第 20-28 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.3507
+        },
+        {
+          "text": "Dynamo has access to multiple branches that cannot be syntactically reconciled, it will return all the objects at the leaves, with the corresponding version information in the context. An update using this context is…",
+          "chunk_id": "papers/dynamo#p007",
+          "citation": "papers/dynamo.pdf#p7",
+          "location": "papers/dynamo.pdf 第 7 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.6143
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "d03",
+      "question": "Dynamo 的 sloppy quorum 和 hinted handoff 是什么？",
+      "tag": "dynamo",
+      "expect": "papers/dynamo#p5",
+      "rank": 2,
+      "hits": [
+        "notes/dynamo-notes#L38-44",
+        "papers/dynamo#p5-6",
+        "papers/dynamo#p8-1",
+        "notes/dynamo-notes#L72-76",
+        "papers/dynamo#p8"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "Dynamo 允许把写落到 偏好列表之外的健康节点上，这叫 sloppy quorum；",
+          "chunk_id": "notes/dynamo-notes#0005",
+          "citation": "notes/dynamo-notes.md#L38-44",
+          "location": "notes/dynamo-notes.md 第 38-44 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.5852
+        },
+        {
+          "text": "这些节点把数据记下来， 等原主恢复再转交，这叫提示移交（hinted handoff）。",
+          "chunk_id": "notes/dynamo-notes#0005",
+          "citation": "notes/dynamo-notes.md#L38-44",
+          "location": "notes/dynamo-notes.md 第 38-44 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.4271
+        },
+        {
+          "text": "Figure 2: Partitioning and replication of keys in Dynamo ring. Table 1: Summary of techniques used in Dynamo and their advantages. Problem Technique Advantage Partitioning Consistent Hashing Incremental Scalability High…",
+          "chunk_id": "papers/dynamo#p005-6",
+          "citation": "papers/dynamo.pdf#p5-6",
+          "location": "papers/dynamo.pdf 第 5 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 1.0
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "d04",
+      "question": "Dynamo 的虚拟节点 virtual node 解决了什么问题？",
+      "tag": "dynamo",
+      "expect": "papers/dynamo#p6",
+      "rank": 1,
+      "hits": [
+        "papers/dynamo#p6-1",
+        "papers/dynamo#p6",
+        "papers/dynamo#p6-3",
+        "papers/dynamo#p8-5",
+        "papers/dynamo#p8-8"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "node in the system, but each node can be responsible for more than one virtual node. Effectively, when a new node is added to the system, it is assigned multiple positions (henceforth, “tokens”) in the ring. The process…",
+          "chunk_id": "papers/dynamo#p006-1",
+          "citation": "papers/dynamo.pdf#p6-1",
+          "location": "papers/dynamo.pdf 第 6 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.7
+        },
+        {
+          "text": "Thus, each node becomes responsible for the region in the ring between it and its predecessor node on the ring. The principle advantage of consistent hashing is that departure or arrival of a node only affects its…",
+          "chunk_id": "papers/dynamo#p006",
+          "citation": "papers/dynamo.pdf#p6",
+          "location": "papers/dynamo.pdf 第 6 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.7
+        },
+        {
+          "text": "called the preference list . The system is designed, as will be explained in Section 4.8, so th at every node in the system can determine which nodes should be in this list for any particular key. To account for node…",
+          "chunk_id": "papers/dynamo#p006-3",
+          "citation": "papers/dynamo.pdf#p6-3",
+          "location": "papers/dynamo.pdf 第 6 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.7
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "d05",
+      "question": "Dynamo 里 (N, R, W) 这三个参数分别代表什么？",
+      "tag": "dynamo",
+      "expect": "papers/dynamo#p5",
+      "rank": 1,
+      "hits": [
+        "papers/dynamo#p14-5",
+        "papers/dynamo#p15",
+        "papers/dynamo#p10-3",
+        "notes/consistency-models#L52-56",
+        "notes/cap-basic#L8-15"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "successful responses (without timing out) for 99.9995% of its requests and no data loss event has occurred to date. Moreover, the primary advantage of Dynamo is that it provides the necessary knobs using the three…",
+          "chunk_id": "papers/dynamo#p014-5",
+          "citation": "papers/dynamo.pdf#p14-5",
+          "location": "papers/dynamo.pdf 第 14 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.64
+        },
+        {
+          "text": "request load. Dynamo allows serv ice owners to customize their storage system to meet their desired performance, durability and consistency SLAs by allowing them to tune the parameters N, R, and W. The production use of…",
+          "chunk_id": "papers/dynamo#p015",
+          "citation": "papers/dynamo.pdf#p15",
+          "location": "papers/dynamo.pdf 第 15 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.64
+        },
+        {
+          "text": "• High performance read engine: While Dynamo is built to be an “always writeable” data store, a few services are tuning its quorum characteristics and us ing it as a high performance read engine. Typically, these…",
+          "chunk_id": "papers/dynamo#p010-3",
+          "citation": "papers/dynamo.pdf#p10-3",
+          "location": "papers/dynamo.pdf 第 10 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.64
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "d06",
+      "question": "Dynamo 的一致性哈希怎么把 key 分配到节点上？",
+      "tag": "dynamo",
+      "expect": "papers/dynamo#p1",
+      "rank": 2,
+      "hits": [
+        "notes/dynamo-notes#L8-13",
+        "papers/dynamo#p1-6",
+        "papers/dynamo#p2-5",
+        "papers/dynamo#p7-6",
+        "papers/dynamo#p5-1"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "把 hash 空间组织成一个环，节点和 key 都 hash 到环上，key 顺时针找到第一个节点。",
+          "chunk_id": "notes/dynamo-notes#0001",
+          "citation": "notes/dynamo-notes.md#L8-13",
+          "location": "notes/dynamo-notes.md 第 8-13 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.4779
+        },
+        {
+          "text": "朴素一致性哈希有两个毛病：节点增减时负载不均、异构机器无法按能力分配。",
+          "chunk_id": "notes/dynamo-notes#0001",
+          "citation": "notes/dynamo-notes.md#L8-13",
+          "location": "notes/dynamo-notes.md 第 8-13 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.4006
+        },
+        {
+          "text": "preferences, session management, sales rank, and product catalog, the common pattern of using a rela tional database would lead to inefficiencies and limit scale and availability. Dynamo provides a simple primary-key…",
+          "chunk_id": "papers/dynamo#p001-6",
+          "citation": "papers/dynamo.pdf#p1-6",
+          "location": "papers/dynamo.pdf 第 1 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.6308
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "n01",
+      "question": "CAP 里的 C、A、P 三个字母的准确定义是什么？",
+      "tag": "notes",
+      "expect": "notes/cap-basic#三个字母的准确定义",
+      "rank": 1,
+      "hits": [
+        "notes/cap-basic#L8-15",
+        "notes/cap-basic#L23-30",
+        "notes/consistency-models#L52-56",
+        "notes/cap-basic#L17-21",
+        "notes/cap-basic#L32-39"
+      ],
+      "must_include": [
+        "线性一致",
+        "有限时间"
+      ],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "C（Consistency）：这里的 C 是线性一致性，不是「最终一致」「弱一致」这种宽泛说法。",
+          "chunk_id": "notes/cap-basic#0001",
+          "citation": "notes/cap-basic.md#L8-15",
+          "location": "notes/cap-basic.md 第 8-15 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.365
+        },
+        {
+          "text": "A（Availability）：每个到达非故障节点的请求，都必须在有限时间内返回非错误响应。",
+          "chunk_id": "notes/cap-basic#0001",
+          "citation": "notes/cap-basic.md#L8-15",
+          "location": "notes/cap-basic.md 第 8-15 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.2671
+        },
+        {
+          "text": "1. 「CAP 让我选两个」：准确说法是「P 必须保留，然后在 C 与 A 之间做选择」。",
+          "chunk_id": "notes/cap-basic#0003",
+          "citation": "notes/cap-basic.md#L23-30",
+          "location": "notes/cap-basic.md 第 23-30 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.6242
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "n02",
+      "question": "线性一致和顺序一致的区别是什么？",
+      "tag": "notes",
+      "expect": "notes/consistency-models#线性一致性",
+      "rank": 1,
+      "hits": [
+        "notes/consistency-models#L17-19",
+        "notes/consistency-models#L9-15",
+        "notes/consistency-models#L3-7",
+        "notes/cap-basic#L8-15",
+        "notes/raft-notes#L60-66"
+      ],
+      "must_include": [
+        "真实时间"
+      ],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "它比线性一致弱：允许把并发操作排出任意顺序，只要大家排得一样。",
+          "chunk_id": "notes/consistency-models#0002",
+          "citation": "notes/consistency-models.md#L17-19",
+          "location": "notes/consistency-models.md 第 17-19 行",
+          "doc_title": "一致性模型速查",
+          "score": 0.436
+        },
+        {
+          "text": "所有节点看到同一个全局顺序，但这个顺序不必与真实时间一致。",
+          "chunk_id": "notes/consistency-models#0002",
+          "citation": "notes/consistency-models.md#L17-19",
+          "location": "notes/consistency-models.md 第 17-19 行",
+          "doc_title": "一致性模型速查",
+          "score": 0.4275
+        },
+        {
+          "text": "要求整个系统表现得像单机单副本：每个操作在其调用与返回之间某个瞬间原子生效， 并且所有客户端看到的顺序与真实时间一致。",
+          "chunk_id": "notes/consistency-models#0001",
+          "citation": "notes/consistency-models.md#L9-15",
+          "location": "notes/consistency-models.md 第 9-15 行",
+          "doc_title": "一致性模型速查",
+          "score": 0.3877
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "n03",
+      "question": "Raft 的安全性有哪两条不能省的规则？",
+      "tag": "notes",
+      "expect": "notes/raft-notes#安全性",
+      "rank": 1,
+      "hits": [
+        "notes/raft-notes#L38-43",
+        "papers/raft#p14",
+        "papers/raft#p1-3",
+        "papers/raft#p13-6",
+        "notes/raft-notes#L68-73"
+      ],
+      "must_include": [
+        "选举限制",
+        "提交规则"
+      ],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "1. 选举限制（Election Restriction）：候选者的日志必须至少和多数派中任何节点一样新， 否则拿不到票。",
+          "chunk_id": "notes/raft-notes#0004",
+          "citation": "notes/raft-notes.md#L38-43",
+          "location": "notes/raft-notes.md 第 38-43 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.3042
+        },
+        {
+          "text": "2. 提交规则：Leader 只能通过「当前 term 的条目在多数派上复制成功」来间接提交更早的条目；",
+          "chunk_id": "notes/raft-notes#0004",
+          "citation": "notes/raft-notes.md#L38-43",
+          "location": "notes/raft-notes.md 第 38-43 行",
+          "doc_title": "Raft 精读笔记",
+          "score": 0.2794
+        },
+        {
+          "text": "0 10 20 30 40 50 60 0 10 20 30 40 50 60 Raft grade Paxos grade Raft then Paxos Paxos then Raft Figure 14: A scatter plot comparing 43 participants’ perfor- mance on the Raft and Paxos quizzes. Points above the diag…",
+          "chunk_id": "papers/raft#p014",
+          "citation": "papers/raft.pdf#p14",
+          "location": "papers/raft.pdf 第 14 页",
+          "doc_title": "Raft: In Search of an Understandable Consensus Algorithm",
+          "score": 0.4857
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "n04",
+      "question": "Dynamo 的读写票数 R + W > N 为什么能保证读到最新写？",
+      "tag": "notes",
+      "expect": "notes/dynamo-notes#读写票数",
+      "rank": 2,
+      "hits": [
+        "papers/dynamo#p11-2",
+        "notes/dynamo-notes#L30-36",
+        "papers/dynamo#p8-2",
+        "papers/dynamo#p10-1",
+        "papers/dynamo#p11-4"
+      ],
+      "must_include": [
+        "相交"
+      ],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "Since Dynamo is run on standard commodity hardware components that have far le ss I/O throughput than high-end enterprise servers, providing co nsistently high performance for read and write operations is a non-trivial…",
+          "chunk_id": "papers/dynamo#p011-2",
+          "citation": "papers/dynamo.pdf#p11-2",
+          "location": "papers/dynamo.pdf 第 11 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.6143
+        },
+        {
+          "text": "R + W > N 时，读集合与写集合必然相交，读能拿到最新版本（强读）；",
+          "chunk_id": "notes/dynamo-notes#0004",
+          "citation": "notes/dynamo-notes.md#L30-36",
+          "location": "notes/dynamo-notes.md 第 30-36 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.5446
+        },
+        {
+          "text": "R + W <= N 时，可能读到旧值，但延迟更低、可用性更好（最终一致）；",
+          "chunk_id": "notes/dynamo-notes#0004",
+          "citation": "notes/dynamo-notes.md#L30-36",
+          "location": "notes/dynamo-notes.md 第 30-36 行",
+          "doc_title": "Dynamo 精读笔记",
+          "score": 0.3521
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "n05",
+      "question": "为什么 CAP 里的 CA 在分布式系统里不成立？",
+      "tag": "notes",
+      "expect": "notes/cap-basic#为什么 CA",
+      "rank": 1,
+      "hits": [
+        "notes/cap-basic#L17-21",
+        "notes/cap-basic#L23-30",
+        "notes/cap-basic#L50-56",
+        "notes/cap-basic#L32-39",
+        "notes/cap-basic#L58-62"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "所以真实系统要么是 CP，要么是 AP， 所谓 CA 只在单机或「假设网络永不分分区」的模型里成立。",
+          "chunk_id": "notes/cap-basic#0002",
+          "citation": "notes/cap-basic.md#L17-21",
+          "location": "notes/cap-basic.md 第 17-21 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.4636
+        },
+        {
+          "text": "只要系统跨机器部署，网络分区就一定会出现。",
+          "chunk_id": "notes/cap-basic#0002",
+          "citation": "notes/cap-basic.md#L17-21",
+          "location": "notes/cap-basic.md 第 17-21 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.2675
+        },
+        {
+          "text": "放弃 P 的分布式系统在工程上不存在。",
+          "chunk_id": "notes/cap-basic#0003",
+          "citation": "notes/cap-basic.md#L23-30",
+          "location": "notes/cap-basic.md 第 23-30 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.401
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "n06",
+      "question": "BASE 理论和 CAP 是什么关系？",
+      "tag": "notes",
+      "expect": "notes/cap-basic#BASE",
+      "rank": 1,
+      "hits": [
+        "notes/cap-basic#L32-39",
+        "papers/dynamo#p14",
+        "notes/cap-basic#L50-56",
+        "papers/dynamo#p14-4",
+        "papers/raft#p13"
+      ],
+      "must_include": [
+        "最终一致"
+      ],
+      "covered": false,
+      "bullets": [
+        {
+          "text": "BASE 不是 CAP 的替代理论，而是「选择 AP 之后，工程上怎么把一致性补回来」的一组手段： 读修复、提示移交（hinted handoff）、反熵（Merkle tree 比对）、业务补偿。",
+          "chunk_id": "notes/cap-basic#0004",
+          "citation": "notes/cap-basic.md#L32-39",
+          "location": "notes/cap-basic.md 第 32-39 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.6545
+        },
+        {
+          "text": "Basically Available：允许降级、允许部分失败，但整体仍可用。",
+          "chunk_id": "notes/cap-basic#0004",
+          "citation": "notes/cap-basic.md#L32-39",
+          "location": "notes/cap-basic.md 第 32-39 行",
+          "doc_title": "CAP 定理：到底在限制什么",
+          "score": 0.2875
+        },
+        {
+          "text": "coordinated locally if Dynamo is using timestamps based versioning. An important advantage of th e client-driven coordination approach is that a load balancer is no longer required to uniformly distribute client load.…",
+          "chunk_id": "papers/dynamo#p014",
+          "citation": "papers/dynamo.pdf#p14",
+          "location": "papers/dynamo.pdf 第 14 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.55
+        }
+      ],
+      "memory_note": ""
+    },
+    {
+      "id": "x01",
+      "question": "同样面对分区，Raft 和 Dynamo 分别牺牲了什么？",
+      "tag": "cross",
+      "expect": "notes/dynamo-notes#和 Raft",
+      "rank": null,
+      "hits": [
+        "papers/dynamo#p5",
+        "papers/dynamo#p5-4",
+        "papers/dynamo#p9-1",
+        "papers/dynamo#p12-3",
+        "notes/cap-basic#L50-56"
+      ],
+      "must_include": [],
+      "covered": true,
+      "bullets": [
+        {
+          "text": "Traditional replicated relationa l database systems focus on the problem of guaranteeing strong c onsistency to replicated data. Although strong consistency provi des the application writer a convenient programming…",
+          "chunk_id": "papers/dynamo#p005",
+          "citation": "papers/dynamo.pdf#p5",
+          "location": "papers/dynamo.pdf 第 5 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.5333
+        },
+        {
+          "text": "It applies a MD5 hash on the key to generate a 128-bit identifier, wh ich is used to determine the storage nodes that are responsible for serving the key. 4.2 Partitioning Algorithm One of the key design requirements…",
+          "chunk_id": "papers/dynamo#p005-4",
+          "citation": "papers/dynamo.pdf#p5-4",
+          "location": "papers/dynamo.pdf 第 5 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.5333
+        },
+        {
+          "text": "partitions, some Dynamo nodes play the role of seeds. Seeds are nodes that are discovered via an external mechanism and are known to all nodes. Because all nodes eventually reconcile their membership with a seed…",
+          "chunk_id": "papers/dynamo#p009-1",
+          "citation": "papers/dynamo.pdf#p9-1",
+          "location": "papers/dynamo.pdf 第 9 页",
+          "doc_title": "Dynamo: Amazon's Highly Available Key-value Store",
+          "score": 0.5333
+        }
+      ],
+      "memory_note": ""
+    }
+  ]
+}
